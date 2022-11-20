@@ -1,0 +1,92 @@
+:root {
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.container {
+    max-width: 1920px;
+    width: 100%;
+    padding: 30px 0 20px 30px;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+h1 {
+    font-size: 80px;
+    font-weight: bold;
+    padding: 30px 40px;
+    text-align: center;
+}
+
+.books {
+    border: 1px solid rgb(215, 211, 211);
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: calc(100%/4 - 20px);
+    box-shadow:  5px 5px 5px rgb(213, 213, 213);
+}
+
+.books img {
+    width: 100%;
+}
+
+.top-books {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.title {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.years {
+    text-align: center;
+    color: gray;
+    padding-bottom: 20px;
+}
+
+.authors {
+    background-color: rgba(204,251,241);
+    text-align: center;
+    width: 100%;
+    padding: 5px;
+    border-radius: 10px;
+
+}
+
+.buttons {
+    display: flex;
+    justify-content: flex-end;
+    border-top: 1px solid rgb(215, 211, 211);
+    
+}
+
+.button {
+    padding:  16px;
+    border: none;
+    background-color: white;
+    text-align: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.button:last-child {
+    border-left: 1px solid rgb(215, 211, 211);
+}
+
+.button:hover {
+    color: rgb(175, 172, 172);
+    cursor: pointer;
+    transition: 0.3s;
+}
