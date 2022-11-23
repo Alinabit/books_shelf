@@ -7,17 +7,19 @@
         <link rel="stylesheet" type="text/css" href="style.css"/>
         <link rel="preconnect" href="https://fonts.googleapis.com">   
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,200;0,300;0,400;0,800;1,400;1,900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet">
     </head>
     <body>
-        <h1>Книжная полка</h1>
-        <div class="container" id="container">
-          
+        <div class="container">
+            <h1>Книжная полка</h1>
+            <div class="add_new_book">
+                <button class="button" onclick="addForm()">Добавить книгу</button>
+            </div>
             
-            
-    
+            <div class="open_form" id="openForm"></div>
+            <div id="fail"></div>
+            <div class="all_books" id="container"></div>
         </div>
-    
         <script src="script.js"></script>
     </body>
 </html>    

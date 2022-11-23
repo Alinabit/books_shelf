@@ -1,41 +1,51 @@
 :root {
-    font-family: 'Nunito Sans', sans-serif;
+    font-family: 'Roboto Condensed', sans-serif;
 }
 
 * {
     box-sizing: border-box;
 }
 
+body {
+    background-color: #23333b;
+}
+
 .container {
     max-width: 1920px;
     width: 100%;
     padding: 30px 0 20px 30px;
+    
+}
+
+.all_books {
     display: flex;
     gap: 20px;
     flex-wrap: wrap;
+    
 }
 
 h1 {
     font-size: 80px;
     font-weight: bold;
     padding: 30px 40px;
+    color: #b3c2b8;
     text-align: center;
 }
 
 .books {
-    border: 1px solid rgb(215, 211, 211);
     border-radius: 10px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     max-width: calc(100%/4 - 20px);
-    box-shadow:  5px 5px 5px rgb(213, 213, 213);
+    /* box-shadow:  5px 5px 5px #b3c2b8; */
 }
 
 .books img {
     width: 100%;
 }
+
 
 .top-books {
     padding: 20px;
@@ -43,6 +53,7 @@ h1 {
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
+    background-color: #b3c2b8;
 }
 
 .title {
@@ -52,7 +63,8 @@ h1 {
 
 .years {
     text-align: center;
-    color: gray;
+    color: #23333b;
+    font-weight: bold;
     padding-bottom: 20px;
 }
 
@@ -63,6 +75,11 @@ h1 {
     padding: 5px;
     border-radius: 10px;
 
+}
+
+.add_new_book {
+    width: 30%;
+    margin: 0 auto;
 }
 
 .buttons {
@@ -81,12 +98,83 @@ h1 {
     width: 100%;
 }
 
+.add_new_book .button, .save_newbook .button {
+    background-color: #1db48c;
+    border: 2px solid #277368;
+}
+
+.add_new_book .button:hover, .save_newbook .button:hover {
+    background-color: #277368;
+    border: 2px solid #1db48c;
+    color: antiquewhite;
+    transition: 0.4s;
+    cursor: pointer;
+}
+
+.save_newbook {
+    width: 30%;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
 .button:last-child {
     border-left: 1px solid rgb(215, 211, 211);
 }
 
 .button:hover {
-    color: rgb(175, 172, 172);
+    color: whitesmoke;
+    background-color: #277368;
     cursor: pointer;
     transition: 0.3s;
+}
+
+.button_add_books {
+    margin: 0 auto;
+    display: block;
+    font-size: 30px;
+}
+
+.add_newbook {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+
+#fail {
+    text-align: center;
+    color: antiquewhite;
+    margin-bottom: 25px;
+    font-size: 20px;
+    width: 65%;
+    padding: 8px 20px;
+    margin: 10px auto;
+}
+
+.input_newbook p {
+    background-color: antiquewhite;
+    color: #23333b;
+    padding: 5px 10px 15px 10px;
+    margin: -10px;
+    margin-right: 15px;
+    border-radius: 5px 0 5px 0;
+}
+
+.input_newbook input {
+    padding: 5px 10px;
+    margin-top: 3px;
+    border-bottom: 5px solid #1db48c;
+}
+
+.input_newbook input:focus {
+    outline: 1px solid #1db48c;
+}
+
+.books {
+    margin-top: 20px;
+}
+
+.open_form {
+    margin-top: 30px;
 }
