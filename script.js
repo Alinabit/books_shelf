@@ -93,9 +93,7 @@ function addBook() {
     books.push(newBook)
     renderBooks()
     clearForm()
-  }
-
-  
+  }  
 }
 
 function deleteBook(id) {
