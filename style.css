@@ -1,32 +1,37 @@
-:root {
-    font-family: 'Roboto Condensed', sans-serif;
-}
-
 * {
+    font-family: 'Roboto Condensed', sans-serif;
+    --b3c2b8: #b3c2b8;
+    --1db48c: #1db48c;
+    --277368: #277368;
+    --whitesmoke: whitesmoke;
+    --23333b: #23333b;
     box-sizing: border-box;
 }
 
 body {
-    background-color: #23333b;
+    background-color: var(--23333b);
 }
 
 .container {
-    max-width: 1920px;
-    width: 100%;
-    padding: 30px 0 20px 30px;
+    max-width: 1120px;
+    margin: 0 auto;
 }
 
 .all_books {
     display: flex;
-    gap: 20px;
+    gap: 40px;
     flex-wrap: wrap;
+    justify-content: center;
+    /* width: 1120px; */
+    /* min-width: 500px; */
+    flex-direction: row;
 }
 
 h1 {
     font-size: 80px;
     font-weight: bold;
     padding: 30px 40px;
-    color: #b3c2b8;
+    color: var(--b3c2b8);
     text-align: center;
 }
 
@@ -36,14 +41,15 @@ h1 {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    max-width: calc(100%/4 - 20px);
-    /* box-shadow:  5px 5px 5px #b3c2b8; */
+    width: calc(100%/4 - 40px);
+    margin-top: 20px;
 }
 
-.books img {
-    width: 100%;
+.book img {
+    width: 200px;
+    height: 250px;
+    border: 1px solid var(--23333b);
 }
-
 
 .top-books {
     padding: 20px;
@@ -51,7 +57,8 @@ h1 {
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
-    background-color: #b3c2b8;
+    background-color: var(--b3c2b8);
+    align-items: center;
 }
 
 .title {
@@ -72,7 +79,6 @@ h1 {
     width: 100%;
     padding: 5px;
     border-radius: 10px;
-
 }
 
 .add_new_book {
@@ -82,46 +88,39 @@ h1 {
 
 .buttons {
     display: flex;
-    justify-content: flex-end;
-    border-top: 1px solid rgb(215, 211, 211);
+    border: 2px solid rgb(215, 211, 211);
     
 }
 
 .button {
     padding:  16px;
     border: none;
-    background-color: white;
+    background-color: var(--whitesmoke);
     text-align: center;
     justify-content: center;
     width: 100%;
 }
 
-.add_new_book .button, .save_newbook .button {
-    background-color: #1db48c;
-    border: 2px solid #277368;
+.green-button {
+    background-color: var(--1db48c);
+    border: 2px solid var(--277368);
 }
 
-.add_new_book .button:hover, .save_newbook .button:hover {
-    background-color: #277368;
-    border: 2px solid #1db48c;
-    color: antiquewhite;
+.green-button:hover {
+    background-color: var(--277368);
+    border: 1px solid var(--1db48c);
+    color: var(--whitesmoke);
     transition: 0.4s;
     cursor: pointer;
 }
 
-.save_newbook {
-    width: 30%;
-    margin: 0 auto;
-    margin-top: 20px;
-}
-
 .button:last-child {
-    border-left: 1px solid rgb(215, 211, 211);
+    border-left: 1px solid var(--23333b);
 }
 
 .button:hover {
-    color: whitesmoke;
-    background-color: #277368;
+    color: var(--whitesmoke);
+    background-color: var(--277368);
     cursor: pointer;
     transition: 0.3s;
 }
@@ -134,25 +133,21 @@ h1 {
 
 .add_newbook {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 40px;
+    background-color: var(--whitesmoke);
+    padding: 30px;
 }
 
-#fail {
-    text-align: center;
-    color: antiquewhite;
-    margin-bottom: 25px;
-    font-size: 20px;
-    width: 65%;
-    padding: 8px 20px;
-    margin: 10px auto;
+.input_newbook {
+    padding: 15px;
 }
 
 .input_newbook p {
-    background-color: antiquewhite;
-    color: #23333b;
+    background-color: var(--23333b);
+    color: var(--whitesmoke);
     padding: 5px 10px 15px 10px;
     margin: -10px;
     margin-right: 15px;
@@ -162,17 +157,58 @@ h1 {
 .input_newbook input {
     padding: 5px 10px;
     margin-top: 3px;
-    border-bottom: 5px solid #1db48c;
+    border-bottom: 5px solid var(--1db48c);
+    width: 100%;
+    
 }
 
 .input_newbook input:focus {
-    outline: 1px solid #1db48c;
-}
-
-.books {
-    margin-top: 20px;
+    outline: 1px solid var(--1db48c);
 }
 
 .open_form {
     margin-top: 30px;
+}
+
+.add-modal {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.376);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.title-add-new-book {
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.icon-close {
+    width: 30px;
+    height: 30px;
+    margin-left: 10px;
+}
+
+.icon-close:hover {
+    rotate: 180deg;
+    transition: 0.5s ease-in-out;
+    cursor: pointer;
+}
+
+.title-icon {
+    display: flex;
+    justify-content: space-between;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
