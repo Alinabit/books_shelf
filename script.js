@@ -40,15 +40,6 @@ const buttonSave = document.getElementById('button-close-save')
 const buttonClose = document.getElementById('icon-close')
 
 
-addBookbutton.addEventListener('click', addForm)
-buttonSave.addEventListener('click', addBook)
-buttonClose.addEventListener('click', closeModal)
-
-function closeModal() {
-  addModalWindow.style.display = "none"
-}
-
-
 function renderBooks() {
   booksID.innerHTML = ""
   books.forEach((book) => {
@@ -56,7 +47,7 @@ function renderBooks() {
       <div class="books" id="books">
           <div class="top-books">
             <div class="book">
-              <img src="${book.image}" alt=""/>
+              <img class="book-img" id="book-img" src="${book.image}" alt=""/>
             </div>
             <div class="title">
               <p>${book.title}</p>
@@ -106,6 +97,13 @@ function addForm() {
   }
 }
 
+addBookbutton.addEventListener('click', addForm)
+buttonSave.addEventListener('click', addBook)
+buttonClose.addEventListener('click', closeModal)
+
+function closeModal() {
+  addModalWindow.style.display = "none"
+}
 
 function addBook() {
   const titleValue = document.getElementById('name_book').value

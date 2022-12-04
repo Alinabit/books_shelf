@@ -1,52 +1,53 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8"/>
-        <title> Книжная полка </title>
-        <link rel="stylesheet" type="text/css" href="reset.css"/>
-        <link rel="stylesheet" type="text/css" href="style.css"/>
-        <link rel="preconnect" href="https://fonts.googleapis.com">   
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet">
-    </head>
-    <body>
-        <div class="add-modal" id="add-modal">
-            <div class="add_newbook">
-              <form>
-                <div class="title-icon">
-                  <p class="title-add-new-book">Добавление новой книги</p>
-                  <img src="icon/icon-close.png" class="icon-close" id="icon-close"/>
-                  </div>
-                <div class="input_newbook">
-                  <p>название книги</p>
-                  <input id="name_book"/>
-                </div>
-                <div class="input_newbook">
-                  <p>автор книги</p>
-                  <input id="author_book"/>
-                </div>
-                <div class="input_newbook">
-                  <p>год издания книги</p>
-                  <input type="number" id="year_book"/>
-                </div>
-                <div class="input_newbook">
-                  <p>ссылка на изображение</p>
-                  <input id="img_book"/>
-                </div>
-              </form>
-              <button id="button-close-save" class="button green-button">Сохранить</button>
+  <head>
+    <meta charset="utf-8"/>
+    <title> Книжная полка </title>
+    <link rel="stylesheet" type="text/css" href="reset.css"/>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">   
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  </head>
+  <body>
+    <div class="add-modal" id="add-modal">
+      <div class="add_newbook">
+        <form>
+          <div class="title-icon">
+            <p class="title-add-new-book">Добавление новой книги</p>
+            <img src="icon/icon-close.png" class="icon-close" id="icon-close"/>
             </div>
-          </div>  
-        <div class="container">
-            <header class="header">
-                <h1>Книжная полка</h1>
-                <div class="add_new_book green-button">
-                    <button id="add-book" class="button green-button">Добавить книгу</button>
-                </div>
-            </header>    
-            <div class="open_form" id="openForm"></div>
-            <div class="all_books" id="container"></div>
+          <div class="input_newbook">
+            <p>название книги</p>
+            <input id="name_book"/>
+          </div>
+          <div class="input_newbook">
+            <p>автор книги</p>
+            <input id="author_book"/>
+          </div>
+          <div class="input_newbook">
+            <p>год издания книги</p>
+            <input type="number" id="year_book"/>
+          </div>
+          <div class="input_newbook">
+            <p>ссылка на изображение</p>
+            <input id="img_book"/>
+          </div>
+        </form>
+        <button id="button-close-save" class="button green-button">Сохранить</button>
+      </div>
+    </div>  
+    <div class="container">
+      <header class="header">
+        <h1>Книжная полка</h1>
+        <div class="add_new_book green-button">
+          <button id="add-book" class="button green-button">Добавить книгу</button>
         </div>
-        <script src="script.js"></script>
-    </body>
+      </header>    
+      <div class="open_form" id="openForm"></div>
+      <div class="all_books" id="container"></div>
+    </div>
+  <script src="script.js"></script>
+</body>
 </html>    
