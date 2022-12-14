@@ -1,20 +1,22 @@
+let count = 0
+
 let books = [
   {
-    id: 0,
+    id: count++,
     title: 'Design Patterns: Elements of Reusable Object-Oriented Software',
     authors: 'Erich Gamma, John Vlissides, Ralph Johnson, Richard Helm',
     year: '1994',
     image: 'https://images-na.ssl-images-amazon.com/images/I/81gtKoapHFL.jpg'
   },
   {
-    id: 1,
+    id: count++,
     title: 'JavaScript: The Good Parts',
     authors: 'Douglas Crockford',
     year: '2008',
     image: 'https://images-na.ssl-images-amazon.com/images/I/81kqrwS1nNL.jpg'
   },
   {
-    id: 2,
+    id: count++,
     title:
     'JavaScript Patterns: Build Better Applications with Coding and Design Patterns',
     authors: 'Stoyan Stefanov',
@@ -23,7 +25,7 @@ let books = [
     'https://images-na.ssl-images-amazon.com/images/I/51%2BSiphz7AL._SX377_BO1,204,203,200_.jpg'
   },
   {
-    id: 3,
+    id: count++,
     title:
     'JavaScript: The Definitive Guide: Activate Your Web Pages (Definitive Guides)',
     authors: 'David Flanagan',
@@ -38,6 +40,7 @@ const addModalWindow = document.getElementById('add-modal')
 const addBookbutton = document.getElementById('add-book')
 const buttonSave = document.getElementById('button-close-save')
 const buttonClose = document.getElementById('icon-close')
+const buttonClose2 = document.getElementById('icon-close2')
 
 
 function renderBooks() {
@@ -60,12 +63,40 @@ function renderBooks() {
             </div>
           </div>    
           <div class="buttons">
-              <button class="button">Изменить</button>
-              <button id="delete-book-button" onclick="deleteBook(${book.id})" class="button">Удалить</button>
+              <button id="update-book-button-${book.id}" class="button">Изменить</button>
+              <button id="delete-book-button-${book.id}" class="button">Удалить</button>
           </div>
       </div>`
   })
+
+  books.forEach((book) => {
+    const deleteBtn = document.getElementById(`delete-book-button-${book.id}`)
+
+    const makeDelete = () => {
+      deleteBook(book.id)
+    }
+
+    deleteBtn.addEventListener('click', makeDelete)
+  })
+
+  books.forEach((book) => {
+    const updateBtn = document.getElementById(`update-book-button-${book.id}`)
+  
+    const makeUpdate = () => {
+      updateBook(book.id)
+    }
+
+    updateBtn.addEventListener('click', makeUpdate)
+  })
+
+  books.forEach((book) => {
+    const btn_change = document.getElementById(`update-book-button-${book.id}`) 
+  
+    btn_change.addEventListener('click', addModalUpdate)
+  })
+  
 }
+
 
 function deleteBook(id) {
   const book = books.find((b) => {
@@ -76,6 +107,19 @@ function deleteBook(id) {
   renderBooks()
   storageSave()
 }
+
+// вот эту функцию
+
+function updateBook(id) {
+  const book = books.find((b) => {
+    return b.id === id
+  })
+    document.getElementById('name_book').value = book.title
+    document.getElementById('author_book').value = book.authors
+    document.getElementById('year_book').value = book.year
+    document.getElementById('img_book').value = book.image
+}
+
 
 
 
@@ -97,12 +141,27 @@ function addForm() {
   }
 }
 
+let isOpenUpdate = false
+function addModalUpdate() {
+  if (isOpenUpdate) {
+    addModalChanges.style.display = "none"
+    isOpen = true
+  } else {        
+    addModalChanges.style.display = "flex"
+    isOpen = false
+  }
+}
+
+const addModalChanges = document.getElementById('add-modal-update')
+
 addBookbutton.addEventListener('click', addForm)
 buttonSave.addEventListener('click', addBook)
 buttonClose.addEventListener('click', closeModal)
+buttonClose2.addEventListener('click', closeModal)
 
 function closeModal() {
   addModalWindow.style.display = "none"
+  addModalChanges.style.display = "none"
 }
 
 function addBook() {
@@ -112,27 +171,28 @@ function addBook() {
   const imageValue = document.getElementById('img_book').value
 
 
-  if (titleValue == 0) {
+  if (titleValue.length === 0) {
       alert('Как называется книга?')
       addModalWindow.style.display = "flex"
       return
   }
-  if (authorsValue == 0) {
+  if (authorsValue.length === 0) {
       alert('Как зовут её автора?')
       addModalWindow.style.display = "flex"
       return
   }
-  if (yearValue == 0) {
+  if (yearValue.length === 0) {
       alert('Год издания книги тоже нужно заполнить')
       addModalWindow.style.display = "flex"
       return
   }
-  if (imageValue == 0) {
+  if (imageValue.length === 0) {
     alert('И снова обязательное поле - добавьте обложку книги')
     addModalWindow.style.display = "flex"
     return
   }
   const newBook = {
+    id: count++,
     title: titleValue,
     authors: authorsValue,
     year: yearValue,
@@ -158,3 +218,16 @@ if (booksJson){
 }
 
 renderBooks()
+
+
+
+
+// function updateBook(id) {
+//   const book = books.find((b) => {
+//     return b.id === id
+//   })
+//   const indexBook = books.indexOf(book)
+//   books.splice(indexBook, 1)
+//   renderBooks()
+//   storageSave()
+// }
