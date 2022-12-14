@@ -108,18 +108,19 @@ function deleteBook(id) {
   storageSave()
 }
 
-// вот эту функцию
+// вот здесь
 
 function updateBook(id) {
   const book = books.find((b) => {
     return b.id === id
   })
+  books.forEach((book) => {
     document.getElementById('name_book').value = book.title
     document.getElementById('author_book').value = book.authors
     document.getElementById('year_book').value = book.year
     document.getElementById('img_book').value = book.image
+})
 }
-
 
 
 
