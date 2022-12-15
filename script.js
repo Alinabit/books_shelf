@@ -41,6 +41,7 @@ const addBookbutton = document.getElementById('add-book')
 const buttonSave = document.getElementById('button-close-save')
 const buttonClose = document.getElementById('icon-close')
 const buttonClose2 = document.getElementById('icon-close2')
+const addModalChanges = document.getElementById('add-modal-update')
 
 
 function renderBooks() {
@@ -93,10 +94,33 @@ function renderBooks() {
     const btn_change = document.getElementById(`update-book-button-${book.id}`) 
   
     btn_change.addEventListener('click', addModalUpdate)
-  })
-  
-}
 
+    let isOpenUpdate = false
+    function addModalUpdate() {
+    if (isOpenUpdate) {
+      addModalChanges.style.display = "none"
+      isOpen = true
+    } else {        
+      addModalChanges.style.display = "flex"
+      isOpen = false
+    }
+      document.getElementById('name_book_change').value = book.title
+      document.getElementById('author_book_change').value = book.authors
+      document.getElementById('year_book_change').value = book.year
+      document.getElementById('img_book_change').value = book.image
+    }
+  })
+}
+  
+// function updateBook(id) {
+//   const book = books.find((b) => {
+//     return b.id === id
+//   })
+//   const indexBook = books.indexOf(book)
+//   books.splice(indexBook, 1)
+//   renderBooks()
+//   storageSave()
+// }
 
 function deleteBook(id) {
   const book = books.find((b) => {
@@ -107,22 +131,6 @@ function deleteBook(id) {
   renderBooks()
   storageSave()
 }
-
-// вот здесь
-
-function updateBook(id) {
-  const book = books.find((b) => {
-    return b.id === id
-  })
-  books.forEach((book) => {
-    document.getElementById('name_book').value = book.title
-    document.getElementById('author_book').value = book.authors
-    document.getElementById('year_book').value = book.year
-    document.getElementById('img_book').value = book.image
-})
-}
-
-
 
 function clearForm() {
   document.getElementById('name_book').value = ""
@@ -141,19 +149,6 @@ function addForm() {
     isOpen = false
   }
 }
-
-let isOpenUpdate = false
-function addModalUpdate() {
-  if (isOpenUpdate) {
-    addModalChanges.style.display = "none"
-    isOpen = true
-  } else {        
-    addModalChanges.style.display = "flex"
-    isOpen = false
-  }
-}
-
-const addModalChanges = document.getElementById('add-modal-update')
 
 addBookbutton.addEventListener('click', addForm)
 buttonSave.addEventListener('click', addBook)
@@ -219,16 +214,3 @@ if (booksJson){
 }
 
 renderBooks()
-
-
-
-
-// function updateBook(id) {
-//   const book = books.find((b) => {
-//     return b.id === id
-//   })
-//   const indexBook = books.indexOf(book)
-//   books.splice(indexBook, 1)
-//   renderBooks()
-//   storageSave()
-// }
