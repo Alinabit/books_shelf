@@ -81,7 +81,7 @@ function renderBooks() {
   })
 
   books.forEach((book) => {
-    const updateBtn = document.getElementById(`update-book-button-${book.id}`)
+    const updateBtn = document.getElementById('btn-save-update')
   
     const makeUpdate = () => {
       updateBook(book.id)
@@ -111,7 +111,7 @@ function renderBooks() {
     }
   })
 }
-  
+  // это для добавления в массив обновленной книги
 // function updateBook(id) {
 //   const book = books.find((b) => {
 //     return b.id === id
@@ -200,6 +200,28 @@ function addBook() {
   clearForm()
   closeModal()
   storageSave()
+}
+
+function updateBook() {
+  const titleValueChange = document.getElementById('name_book_change').value
+  const authorsValueChange = document.getElementById('author_book_change').value
+  const yearValueChange = document.getElementById('year_book_change').value
+  const imageValueChange = document.getElementById('img_book_change').value
+
+  const newBook = {
+    id: count++,
+    title: titleValueChange,
+    authors: authorsValueChange,
+    year: yearValueChange,
+    image: imageValueChange
+  }
+  books.push(newBook)
+
+  renderBooks()
+  clearForm()
+  closeModal()
+  storageSave()
+
 }
 
 function storageSave() {
