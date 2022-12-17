@@ -81,46 +81,25 @@ function renderBooks() {
   })
 
   books.forEach((book) => {
-    const updateBtn = document.getElementById('btn-save-update')
+    const btnChange = document.getElementById(`update-book-button-${book.id}`) 
   
-    const makeUpdate = () => {
-      updateBook(book.id)
-    }
+    btnChange.addEventListener('click', addModalUpdate)
 
-    updateBtn.addEventListener('click', makeUpdate)
-  })
-
-  books.forEach((book) => {
-    const btn_change = document.getElementById(`update-book-button-${book.id}`) 
-  
-    btn_change.addEventListener('click', addModalUpdate)
-
-    let isOpenUpdate = false
-    function addModalUpdate() {
-    if (isOpenUpdate) {
-      addModalChanges.style.display = "none"
-      isOpen = true
-    } else {        
+    function addModalUpdate() {     
       addModalChanges.style.display = "flex"
-      isOpen = false
-    }
       document.getElementById('name_book_change').value = book.title
       document.getElementById('author_book_change').value = book.authors
       document.getElementById('year_book_change').value = book.year
       document.getElementById('img_book_change').value = book.image
+
+      const updateBtn = document.getElementById('btn-save-update')
+      const makeUpdate = () => {
+      updateBook(book.id, makeUpdate)
+    }
+      updateBtn.addEventListener('click', makeUpdate)
     }
   })
 }
-  // это для добавления в массив обновленной книги
-// function updateBook(id) {
-//   const book = books.find((b) => {
-//     return b.id === id
-//   })
-//   const indexBook = books.indexOf(book)
-//   books.splice(indexBook, 1)
-//   renderBooks()
-//   storageSave()
-// }
 
 function deleteBook(id) {
   const book = books.find((b) => {
@@ -202,20 +181,29 @@ function addBook() {
   storageSave()
 }
 
-function updateBook() {
+function updateBook(id, makeUpdate) {
+
+  const updateBtn = document.getElementById('btn-save-update')
+  updateBtn.removeEventListener('click', makeUpdate)
+
+  const book = books.find((b) => {
+    return b.id === id
+  })
+  const indexBook = books.indexOf(book)
+
   const titleValueChange = document.getElementById('name_book_change').value
   const authorsValueChange = document.getElementById('author_book_change').value
   const yearValueChange = document.getElementById('year_book_change').value
   const imageValueChange = document.getElementById('img_book_change').value
 
   const newBook = {
-    id: count++,
+    id,
     title: titleValueChange,
     authors: authorsValueChange,
     year: yearValueChange,
     image: imageValueChange
   }
-  books.push(newBook)
+    books.splice(indexBook, 1, newBook)
 
   renderBooks()
   clearForm()
